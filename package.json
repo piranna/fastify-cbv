@@ -1,0 +1,43 @@
+{
+  "name": "fastify-cbv",
+  "version": "0.1.0",
+  "description": "Class-Based Views for Fastify (Django-style) with contract-first schemas and strict TypeScript types.",
+  "type": "module",
+  "main": "./dist/cjs/index.cjs",
+  "types": "./dist/types/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.json --module commonjs --outDir dist/cjs && cp -R dist/esm/*.d.ts dist/types || true",
+    "dev": "node --loader ts-node/esm src/examples/server.mts",
+    "test": "node -e \"console.log('add your favorite runner')\"",
+    "lint": "eslint ."
+  },
+  "keywords": ["fastify", "cbv", "class-based-views", "http", "typescript"],
+  "author": "you",
+  "license": "MIT",
+  "peerDependencies": {
+    "fastify": ">=4 || >=5",
+    "fastify-type-provider-json-schema-to-ts": "^3",
+    "json-schema-to-ts": "^3"
+  },
+  "dependencies": {
+    "fastify-allow": "^2.0.0",
+    "fastify-plugin": "^4.5.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "ts-node": "^10.9.2",
+    "@types/node": "^20.12.12",
+    "eslint": "^9.10.0"
+  }
+}
